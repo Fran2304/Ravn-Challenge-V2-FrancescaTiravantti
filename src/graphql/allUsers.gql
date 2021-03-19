@@ -1,0 +1,17 @@
+query{
+  allPeople{
+    people {
+      id
+      name
+      eyeColor
+      species{
+        name
+      }
+      homeworld{
+        name
+      }
+    }
+  }
+
+}
+
