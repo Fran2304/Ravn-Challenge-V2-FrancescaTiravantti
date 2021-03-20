@@ -14,8 +14,10 @@ const routes = [
   {
     path: '/character/:person',
     name: 'Detail',
-    component: Detail
+    component: Detail,
+    props: true,
   },
+  
   // {
   //   path: '/about',
   //   name: 'About',
