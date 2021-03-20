@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <header>
-      People of Star Wars
+      <h2>People of Star Wars</h2>
     </header>
     <!-- <font-awesome-icon :icon="['fas', 'robot']"/> -->
     <ApolloQuery :query="require('../graphql/allUsers.gql')">
@@ -58,13 +58,16 @@ header {
   height: 53px;
   background-color: #121212;
   color: #ffffff;
-  font-weight: bold;
-  font-size: 17px;
-  line-height: 20px;
   display: flex;
-  letter-spacing: 0.0125em;
   justify-content: center;
   align-items: center;
+}
+
+h2{
+font-weight: bold;
+  font-size: 17px;
+  line-height: 20px;
+  letter-spacing: 0.0125em;
 }
 
 h4 {
@@ -113,7 +116,8 @@ justify-content: center;
 .no-result p{
   display: inline-block;
   margin: 10px 10px 0 0;
-  font-style: Bold;
-Font-size: 17px;
+  font-weight: bold;
+  font-size: 17px;
+  color:#828282;
 }
 </style>
