@@ -1,30 +1,53 @@
 <template>
   <div class="detail">
-    <p>character id {{ person }}</p>
     <!-- Filtrar apollo query -->
     <ApolloQuery
       :query="
         (gql) => gql`
-          query MyHelloQuery($person: ID) {
-            person(id: $person) {
+          query MyHelloQuery($personId: ID) {
+            person(id: $personId) {
               name
               birthYear
-              gender
-              species {
-                name
+              eyeColor
+              hairColor
+              skinColor
+              vehicleConnection {
+                vehicles {
+                  name
+                }
               }
             }
           }
         `
       "
-      :variables="{ person }"
+      :variables="{ personId }"
     >
       <template v-slot="{ result: { loading, error, data } }">
         <section v-if="loading">Loading...</section>
         <section v-else-if="error">An error occurred</section>
         <section v-else-if="data">
-          {{ data.person }}
-          
+          <h2>{{ data.person.name }}</h2>
+          <section>
+            <h3>General Information</h3>
+            <li v-if="data.person.eyeColor">
+              Eye Color {{ data.person.eyeColor }}
+            </li>
+            <li v-if="data.person.hairColor">
+              Hair Color{{ data.person.hairColor }}
+            </li>
+            <li v-if="data.person.skinColor">
+              Skin Color{{ data.person.skinColor }}
+            </li>
+            <li v-if="data.person.birthYear">
+              Birth Year{{ data.person.birthYear }}
+            </li>
+          </section>
+          <section>
+            <h3>Vehicles</h3>
+            <section v-for="vehicle in data.person.vehicleConnection.vehicles" :key="vehicle.id">
+              <li>{{vehicle.name}}</li>
+            </section>
+          </section>
         </section>
       </template>
     </ApolloQuery>
@@ -35,7 +58,7 @@
 // @ is an alias to /src
 export default {
   name: "Detail",
-  props: ["person"],
+  props: ["personId"],
 };
 </script>
 <style scoped></style>
