@@ -77,6 +77,11 @@
 export default {
   name: "Detail",
   props: ["personId"],
+  data(){
+    return{
+      
+    }
+  }
 };
 </script>
 <style scoped>
