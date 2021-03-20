@@ -4,7 +4,7 @@
 
 This mobile application will help you to  find all the characters from Star Wars ( name, species & homeworld). If you want to get more information (eyesColor, skinColor, birthYear, etc) you only have to click on them.
 
-![Optional Text](/src/assets/starwars.gif)
+![Optional Text](src/assets/starwars.gif)
 ### Get started
 
 1. Clone the repo
