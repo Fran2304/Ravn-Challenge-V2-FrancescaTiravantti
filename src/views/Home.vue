@@ -3,6 +3,7 @@
     <header>
       People of Star Wars
     </header>
+    <!-- <font-awesome-icon :icon="['fas', 'robot']"/> -->
     <ApolloQuery :query="require('../graphql/allUsers.gql')">
       <template v-slot="{ result: { loading, error, data } }">
         <section v-if="loading" class="loading apollo">
@@ -17,19 +18,18 @@
               <section class="container-character">
                 <section>
                   <h4>{{ user.name }}</h4>
-                <section class="container-description">
-                  <p>
-                    <span v-if="user.species"
-                      >{{ user.species.name }} from &nbsp;</span
-                    >
-                    <span v-if="user.homeworld"
-                      >&nbsp; {{ user.homeworld.name }}</span
-                    >
-                  </p>
+                  <section class="container-description">
+                    <p>
+                      <span v-if="user.species"
+                        >{{ user.species.name }} from &nbsp;</span
+                      >
+                      <span v-if="user.homeworld"
+                        >&nbsp; {{ user.homeworld.name }}</span
+                      >
+                    </p>
+                  </section>
                 </section>
-                <img src="../assets/row-btn.png" alt="">
-                </section>
-                
+                <i class="fas fa-angle-right"></i>
               </section>
             </RouterLink>
           </section>
@@ -76,10 +76,16 @@ h4 {
   color: #333333;
 }
 
-.container-character{
+.container-character {
   height: 69px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-character i{
+  color:#333333;
 }
 .container-description {
   font-weight: normal;
@@ -89,9 +95,7 @@ h4 {
   align-items: center;
   letter-spacing: 0.0125em;
   color: #828282;
- 
 }
-
 
 .link-character {
   text-decoration: none;
