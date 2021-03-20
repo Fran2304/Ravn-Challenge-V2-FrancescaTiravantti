@@ -1,26 +1,35 @@
 <template>
   <div class="home">
     <ApolloQuery :query="require('../graphql/allUsers.gql')">
-        <template v-slot="{ result: { loading, error, data } }">
-          <div v-if="loading">Loading...</div>
-          <div v-else-if="error">An error occurred</div>
-          <div v-else-if="data">
-            <div v-for="user in data.allPeople.people" :key="user.id">
-                <li>{{ user.name }}</li>
-                <p v-if="user.species">{{user.species.name}} from {{user.homeworld.name}}</p>
-            </div>
-          </div>
-        </template>
+      <template v-slot="{ result: { loading, error, data } }">
+        <section v-if="loading">Loading...</section>
+        <section v-else-if="error">An error occurred</section>
+        <section v-else-if="data">
+          <section v-for="user in data.allPeople.people" :key="user.id">
+            <RouterLink :to="`character/${user.name}`" class="link-character">
+              <section class="container-character">
+                <h4>{{ user.name }}</h4>
+                <p v-if="user.species">
+                  {{ user.species.name }} from {{ user.homeworld.name }}
+                </p>
+              </section>
+            </RouterLink>
+          </section>
+        </section>
+      </template>
     </ApolloQuery>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'Home',
-}
+  name: "Home",
+};
 </script>
-<style scoped></style>
+<style scoped>
+.link-character {
+  text-decoration: none;
+}
+
+</style>
