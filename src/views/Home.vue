@@ -7,7 +7,8 @@
     <ApolloQuery :query="require('../graphql/allUsers.gql')">
       <template v-slot="{ result: { loading, error, data } }">
         <section v-if="loading" class="loading apollo">
-          ...Loading
+          <!-- ...Loading -->
+          
         </section>
         <section v-else-if="error" class="error apollo">
           An error occurred
@@ -35,7 +36,8 @@
           </section>
         </section>
         <div v-else class="no-result apollo">
-          <LoadSpinner></LoadSpinner>
+          <p>Loading</p>
+          <LoadSpinner class="spinner"></LoadSpinner>
         </div>
       </template>
     </ApolloQuery>
@@ -99,5 +101,19 @@ h4 {
 
 .link-character {
   text-decoration: none;
+}
+
+.no-result{
+height: 110px;
+display: flex;
+padding: 18px;
+justify-content: center;
+}
+
+.no-result p{
+  display: inline-block;
+  margin: 10px 10px 0 0;
+  font-style: Bold;
+Font-size: 17px;
 }
 </style>
