@@ -6,7 +6,7 @@
         <section v-else-if="error">An error occurred</section>
         <section v-else-if="data">
           <section v-for="user in data.allPeople.people" :key="user.id">
-            <RouterLink :to="`character/${user.name}`" class="link-character">
+            <RouterLink :to="`character/${user.id}`" class="link-character">
               <section class="container-character">
                 <h4>{{ user.name }}</h4>
                 <p v-if="user.species">
